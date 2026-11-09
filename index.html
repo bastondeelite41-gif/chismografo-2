@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Chismógrafo · Chismes 100% falsos</title>
+<style>
+:root{--bg:#fff7e6;--surface:#ffffff;--ink:#1d1a16;--muted:#6b6358;--accent:#e11d48;--accent2:#fde047;--line:#1d1a16;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17130f;--surface:#241f19;--ink:#f6efe3;--muted:#a79d8d;--accent:#fb7185;--accent2:#facc15;--line:#f6efe3;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17130f;--surface:#241f19;--ink:#f6efe3;--muted:#a79d8d;--accent:#fb7185;--accent2:#facc15;--line:#f6efe3;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.45}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+header{text-align:center;border-bottom:4px double var(--line);padding-bottom:12px;margin-bottom:18px}
+h1{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(2rem,9vw,3.4rem);margin:0;letter-spacing:1px;text-transform:uppercase}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);font-style:italic;margin:4px 0 0}
+.panel{background:var(--surface);border:2px solid var(--line);padding:14px;box-shadow:5px 5px 0 var(--line)}
+label{display:block;font:700 .8rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.05em;margin:10px 0 4px}
+input,textarea,select{width:100%;font:inherit;padding:9px;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:0}
+textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>div{flex:1 1 180px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+button{font:700 .9rem Arial,sans-serif;text-transform:uppercase;padding:10px 14px;border:2px solid var(--line);background:var(--accent2);color:#1d1a16;cursor:pointer;box-shadow:3px 3px 0 var(--line)}
+button.main{background:var(--accent);color:#fff}
+button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+#feed{margin-top:26px;display:grid;gap:18px}
+.empty{text-align:center;color:var(--muted);font-style:italic;padding:20px}
+.card{position:relative;background:var(--surface);border:2px solid var(--line);padding:14px 14px 12px;box-shadow:5px 5px 0 var(--line)}
+.card:nth-child(odd){transform:rotate(-.6deg)}.card:nth-child(even){transform:rotate(.5deg)}
+.tag{display:inline-block;background:var(--accent);color:#fff;font:700 .7rem Arial,sans-serif;text-transform:uppercase;padding:2px 8px;letter-spacing:.08em}
+.card h2{font-family:Impact,"Arial Black",sans-serif;font-weight:400;font-size:1.5rem;margin:8px 0 6px;text-transform:uppercase;line-height:1.15;overflow-wrap:anywhere}
+.card p{margin:0 0 8px;overflow-wrap:anywhere;white-space:pre-wrap}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font:.78rem Arial,sans-serif;color:var(--muted)}
+.fire{font-size:1.1rem}
+.stamp{position:absolute;right:10px;top:10px;border:3px solid var(--accent);color:var(--accent);font:900 .75rem Arial,sans-serif;padding:2px 6px;transform:rotate(8deg);letter-spacing:.1em;opacity:.85}
+.card .x{padding:3px 8px;font-size:.7rem;box-shadow:none;background:transparent;color:var(--muted);border-color:var(--muted)}
+footer{text-align:center;color:var(--muted);font:.78rem Arial,sans-serif;margin-top:30px}
+.btnlink,.mail{font:700 .9rem Arial,sans-serif;text-transform:uppercase;padding:10px 14px;border:2px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;box-shadow:3px 3px 0 var(--line);display:inline-block}
+.mail{padding:3px 8px;font-size:.7rem;box-shadow:none;border-color:var(--muted);color:var(--muted);background:transparent}
+.chk{display:flex;align-items:center;gap:8px;font:.85rem Arial,sans-serif;margin-top:8px;text-transform:none;letter-spacing:0;font-weight:400}
+.chk input{width:auto}
+.hint{font:.75rem Arial,sans-serif;color:var(--muted);margin:4px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>El Chismó<span>grafo</span></h1>
+<p class="sub">Noticias totalmente inventadas, solo para reírse</p>
+</header>
+
+<section class="panel" aria-label="Escribir chisme">
+<div class="row">
+<div><label for="who">¿De quién es el chisme?</label><input id="who" maxlength="60" placeholder="Ej: mi gato Pelusa"></div>
+<div><label for="src">Fuente “confiable”</label>
+<select id="src">
+<option>Fuentes cercanas al sofá</option>
+<option>Un pajarito sin verificar</option>
+<option>El vecino del 4B</option>
+<option>Radio Pasillo</option>
+<option>Alguien que lo escuchó de alguien</option>
+</select></div>
+</div>
+<label for="head">Titular</label>
+<input id="head" maxlength="100" placeholder="Escribe lo que sea…">
+<label for="body">El chisme completo</label>
+<textarea id="body" maxlength="600" placeholder="Cuenta todo con lujo de detalles inventados…"></textarea>
+<label for="heat">Nivel de escándalo: <span id="heatv" class="fire">🔥🔥🔥</span></label>
+<input id="heat" type="range" min="1" max="5" value="3">
+<p class="hint" id="status"></p>
+<div class="btns">
+<button class="main" id="pub">Publicar chisme</button>
+<button id="rnd">🎲 Sorpréndeme</button>
+<button id="clr">Borrar todo</button>
+</div>
+</section>
+
+<section id="feed" aria-live="polite"></section>
+<footer>Todo lo que ves aquí es ficción escrita por ti. Úsalo con humor y buena onda.</footer>
+</div>
+
+<script>
+(function(){
+var KEY="chismografo-v1";
+var $=function(id){return document.getElementById(id)};
+var items=[];
+try{var s=localStorage.getItem(KEY);if(s)items=JSON.parse(s)||[]}catch(e){items=[]}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){}}
+
+var heads=[
+"¡ESCÁNDALO! {n} fue visto/a negociando con una paloma",
+"EXCLUSIVA: {n} lleva semanas fingiendo que sabe cocinar",
+"{n} confiesa que nunca terminó de ver ninguna serie",
+"ÚLTIMA HORA: {n} se enamoró de un microondas",
+"{n} habría inventado el “ya voy llegando” estando en la cama",
+"Fuentes aseguran que {n} entrena en secreto para un concurso de siestas"
+];
+var bodies=[
+"Según testigos que prefieren no existir, todo ocurrió un martes por la tarde. {n} negó todo, pero dejó migas de evidencia en el sofá.",
+"Un pajarito muy mal informado asegura que {n} tiene un doble que va a las reuniones aburridas. Las investigaciones apenas empiezan.",
+"Se dice, se comenta y se exagera que {n} ya firmó un contrato millonario con su propia almohada. Nadie ha confirmado nada.",
+"Vecinos relatan haber escuchado a {n} ensayando un discurso de victoria frente al espejo. El motivo sigue siendo un misterio.",
+"{n} fue captado/a a las 3 a. m. comiendo cereal con tenedor. Sus abogados imaginarios piden respeto a su privacidad."
+];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function name(){return $("who").value.trim()||"Alguien muy famoso"}
+
+$("heat").addEventListener("input",function(){$("heatv").textContent="🔥".repeat(+$("heat").value)});
+
+$("rnd").addEventListener("click",function(){
+var n=name();
+$("head").value=pick(heads).replace(/\{n\}/g,n);
+$("body").value=pick(bodies).replace(/\{n\}/g,n);
+$("heat").value=1+Math.floor(Math.random()*5);
+$("heat").dispatchEvent(new Event("input"));
+});
+
+$("pub").addEventListener("click",function(){
+var h=$("head").value.trim(),b=$("body").value.trim();
+if(!h&&!b){$("head").focus();return}
+items.unshift({
+id:Date.now()+Math.random(),
+who:$("who").value.trim(),
+src:$("src").value,
+head:h||"Chisme sin título",
+body:b,
+heat:+$("heat").value,
+date:new Date().toLocaleDateString("es",{day:"numeric",month:"short",year:"numeric"})
+});
+save();render();
+$("head").value="";$("body").value="";
+sendToMail(items[0]);
+});
+
+$("clr").addEventListener("click",function(){
+if(items.length&&confirm("¿Borrar todos los chismes?")){items=[];save();render()}
+});
+
+var ACCESS_KEY="a1f18414-ab51-4b2d-a7b5-00ec790d6466";
+function setStatus(t){$("status").textContent=t}
+function sendToMail(it){
+if(ACCESS_KEY.indexOf("PEGA_AQUI")===0){setStatus("Falta configurar la clave para enviar al correo.");return}
+var data={access_key:ACCESS_KEY,subject:"Nuevo chisme falso: "+it.head,from_name:"El Chismógrafo",
+"Sobre":it.who||"(nadie)","Titular":it.head,"Chisme":it.body,"Fuente":it.src,"Escándalo":"🔥".repeat(it.heat)};
+setStatus("Enviando a tu correo…");
+fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)})
+.then(function(r){return r.json()})
+.then(function(j){setStatus(j.success?"✉️ Chisme enviado a tu correo":"No se pudo enviar: "+(j.message||"error"))})
+.catch(function(){setStatus("No se pudo enviar (¿sin conexión?)")});
+}
+function el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e}
+
+function render(){
+var f=$("feed");f.textContent="";
+if(!items.length){f.appendChild(el("div","empty","Aún no hay chismes. Escribe uno arriba o pulsa “Sorpréndeme”."));return}
+items.forEach(function(it){
+var c=el("article","card");
+c.appendChild(el("div","stamp","100% FALSO"));
+c.appendChild(el("span","tag",it.who?"Sobre: "+it.who:"Chisme del día"));
+c.appendChild(el("h2",null,it.head));
+if(it.body)c.appendChild(el("p",null,it.body));
+var m=el("div","meta");
+m.appendChild(el("span",null,"Fuente: "+it.src+" · "+it.date));
+m.appendChild(el("span","fire","🔥".repeat(it.heat)));
+var x=el("button","x","Quitar");
+x.addEventListener("click",function(){items=items.filter(function(i){return i.id!==it.id});save();render()});
+m.appendChild(x);
+c.appendChild(m);
+f.appendChild(c);
+});
+}
+render();
+})();
+</script>
+</body>
+</html>
